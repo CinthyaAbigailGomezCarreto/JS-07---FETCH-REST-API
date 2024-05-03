@@ -2,7 +2,7 @@ body {
     margin: 0;
     font-family: 'Karla', sans-serif;
     background-color: #14141c;
-    color: white;
+    color: #fb8332;
     text-align: center;
     padding: 40px;
 }
@@ -45,3 +45,25 @@ body {
     background-color: #fb8332;
     box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
 }
+
+/* Estilos CSS para la tarjeta */
+.pokemon-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  .pokemon-card h3 {
+    margin-top: 0;
+    color: #fb8332;
+  }
+  .pokemon-card img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+   
