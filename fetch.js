@@ -28,18 +28,30 @@ document.getElementById('get-btn')
         const text = document.getElementById('poke-name').value.toLowerCase();
         const pokemon = await fetchPokemon(text);
         localStorage.setItem('currentPokeId', pokemon.id);
-        console.log(pokemon.name);
+        console.log(pokemon.id);
 
         renderPokemonCard(pokemon);
     })
 
+
+document.addEventListener('DOMContentLoaded', async () => {
+    console.log("prueba");
+    const currentPokeId = parseInt(localStorage.getItem('currentPokeId'));
+    const newId = Math.max(1, currentPokeId);
+    const pokemon = await fetchPokemon(newId);
+    console.log(pokemon.name);
+    renderPokemonCard(pokemon);
+})
+
+
+/* Original
 document.addEventListener('DOMContentLoaded', async () => {
     const storedId = localStorage.getItem('currentPokeId');
     const initialId = storedId ? parseInt(storedId) : 1;
     const pokemon = await fetchPokemon(initialId);
     console.log(pokemon.name);
-    //renderPokemonCard(pokemon);
-})
+    renderPokemonCard(pokemon);
+})*/
 
 // obtener el anterior
 //
@@ -51,8 +63,10 @@ document.getElementById('previous-btn')
         const currentPokeId = parseInt(localStorage.getItem('currentPokeId'));
         const newId = Math.max(1, currentPokeId -1);
         const pokemon = await fetchPokemon(newId);
-        console.log(pokemon.name);
+        localStorage.setItem('currentPokeId', pokemon.id);
+        console.log(pokemon.weight);
         renderPokemonCard(pokemon);
+        //document.getElementById("poke-name").value = "anterior";
     })
 
 document.getElementById('next-btn')
@@ -60,6 +74,7 @@ document.getElementById('next-btn')
         const currentPokeId = parseInt(localStorage.getItem('currentPokeId'));
         const newId = currentPokeId + 1;
         const pokemon = await fetchPokemon(newId);
+        localStorage.setItem('currentPokeId', pokemon.id);
         console.log(pokemon);
         renderPokemonCard(pokemon);
     })
@@ -69,6 +84,7 @@ document.getElementById('next-btn')
 ////////////////// POST
 //
 
+/*
 fetch('https://jsonplaceholder.typicode.com/posts', {
     method: 'POST',
     body: JSON.stringify({
@@ -81,6 +97,8 @@ fetch('https://jsonplaceholder.typicode.com/posts', {
     }
 }).then(res => res.json())
     .then(json => console.log(json))
+
+*/
 
 // Función para renderizar la tarjeta del Pokémon en el DOM
 const renderPokemonCard = (pokemon) => {
